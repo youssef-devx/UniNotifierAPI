@@ -79,7 +79,9 @@ function getFetchedPublications() {
 // getFetchedPublications()
 
 app.get("/", (req, res) => {
-  res.send("Hello World!")
+  fetch("https://something.com/")
+  .then(async r => res.send(await r.text()))
+  .catch(res.json)
 })
 
 app.post("/publications", (req, res) => {
@@ -89,6 +91,7 @@ app.post("/publications", (req, res) => {
   Promise.all(publicationsPromises).then(labelsPublications => {
     res.json(labelsPublications)
   })
+  .catch(res.sendStatus(500))
 })
 
 app.listen(PORT, () => console.log("Server started on port", PORT))
