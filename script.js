@@ -78,6 +78,10 @@ function getFetchedPublications() {
 
 // getFetchedPublications()
 
+app.get("/", (req, res) => {
+  res.send("Hello World!")
+})
+
 app.post("/publications", (req, res) => {
   const publicationsToFetch = req.body.publicationsToFetch
 
