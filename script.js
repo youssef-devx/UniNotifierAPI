@@ -78,6 +78,25 @@ function getFetchedPublications() {
 
 // getFetchedPublications()
 
+
+app.get("/maven-metadata.xml", (req, res) => {
+  const xml = `<metadata>
+<groupId>com.transistorsoft</groupId>
+<artifactId>tsbackgroundfetch</artifactId>
+<versioning>
+<latest>1.0.2</latest>
+<release>1.0.2</release>
+<versions>
+<version>1.0.1</version>
+<version>1.0.2</version>
+</versions>
+<lastUpdated>20230820223945</lastUpdated>
+</versioning>
+</metadata>`
+  res.send(xml)
+})
+
+
 app.get("/", (req, res) => {
   fetch("https://something.com/")
   .then(async r => res.send(await r.text()))
